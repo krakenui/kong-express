@@ -3,7 +3,7 @@ export type ObjecType = number | string | boolean | object | Object | void;
 export type ObjectValidateOption = {
     value: any;
     required?: boolean;
-    type: ObjecType;
+    type?: ObjecType;
 };
 
 export type ObjectValidateOptions = {
