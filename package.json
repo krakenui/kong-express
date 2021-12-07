@@ -1,6 +1,6 @@
 {
     "name": "kong-express",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Express base settings by Kong team!",
     "main": "lib/index.js",
     "scripts": {
