@@ -1,6 +1,13 @@
+import { Request } from 'express';
 import Logger from '../helpers/Logging';
 
-export type AuthTokenPayload = {
+export type KongExpressRequest = Request & {
+    authContext: AuthContext;
+    query: any;
+    params: any;
+};
+
+export type AuthContext = {
     userId: string;
     verified: boolean;
     exp: number;
@@ -22,7 +29,7 @@ export abstract class AuthAdapter {
         throw Error('Method not implement!');
     }
 
-    validateToken(token: string): Promise<AuthTokenPayload> {
+    validateToken(token: string): Promise<AuthContext> {
         Logger.debug(token);
         throw Error('Method not implement!');
     }

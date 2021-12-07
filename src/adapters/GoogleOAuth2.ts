@@ -1,6 +1,6 @@
 import { OAuth2Client } from 'google-auth-library';
 
-import { AuthAdapter, AuthTokenPayload } from './AuthAdapter';
+import { AuthAdapter, AuthContext } from './AuthAdapter';
 
 // Google's OAuth 2.0 endpoint for revoking access tokens.
 const GOOGLE_OAUTH2_API =
@@ -30,7 +30,7 @@ export class GoogleOAuth2 extends AuthAdapter {
         return Promise.resolve(`${GOOGLE_OAUTH2_API}/revoke?token=${token}`);
     }
 
-    async validateToken(token: string): Promise<AuthTokenPayload> {
+    async validateToken(token: string): Promise<AuthContext> {
         const ticket = await this.oAuth2Client.verifyIdToken({
             idToken: token,
             audience: GOOGLE_CLIENT_AUDIENCE,

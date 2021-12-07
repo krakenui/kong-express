@@ -1,4 +1,10 @@
-export declare type AuthTokenPayload = {
+import { Request } from 'express';
+export declare type KongExpressRequest = Request & {
+    authContext: AuthContext;
+    query: any;
+    params: any;
+};
+export declare type AuthContext = {
     userId: string;
     verified: boolean;
     exp: number;
@@ -12,6 +18,6 @@ export declare type AuthTokenPayload = {
 export declare abstract class AuthAdapter {
     loginRedirectURL(): Promise<string>;
     logoutRedirectURL(token: string): Promise<string>;
-    validateToken(token: string): Promise<AuthTokenPayload>;
+    validateToken(token: string): Promise<AuthContext>;
 }
 //# sourceMappingURL=AuthAdapter.d.ts.map

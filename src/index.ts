@@ -4,3 +4,4 @@ export * from './jwt';
 export * from './middlewares';
 export * from './helpers';
 export * from './adapters';
+export * from './adapters/AuthAdapter';
