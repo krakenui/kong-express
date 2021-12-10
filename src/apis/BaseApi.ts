@@ -50,6 +50,15 @@ export abstract class BaseApi {
     }
 
     /**
+     * Define common patch routing
+     * @param subPath sub path
+     * @param handlers handlers
+     */
+     public PATCH(subPath: string, handlers: ExpressRequesthandlers[]) {
+        this.router.patch(`${this.basPath}${subPath}`, handlers);
+    }
+
+    /**
      * Define common delete routing
      * @param subPath sub path
      * @param handlers handlers

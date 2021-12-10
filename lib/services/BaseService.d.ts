@@ -5,7 +5,7 @@ export declare class IncomingMessage extends http.IncomingMessage {
     originalUrl?: http.IncomingMessage['url'] | undefined;
 }
 export declare type ExpressRequesthandlers = (req: IncomingMessage, res: http.ServerResponse, next: NextFunction) => void;
-export declare abstract class BaseApi {
+export declare abstract class BaseService<ApiType, ModelType> {
     router: Router;
     private basPath;
     constructor(router: Router, path: string);
@@ -29,12 +29,6 @@ export declare abstract class BaseApi {
      */
     PUT(subPath: string, handlers: ExpressRequesthandlers[]): void;
     /**
-     * Define common patch routing
-     * @param subPath sub path
-     * @param handlers handlers
-     */
-    PATCH(subPath: string, handlers: ExpressRequesthandlers[]): void;
-    /**
      * Define common delete routing
      * @param subPath sub path
      * @param handlers handlers
@@ -47,4 +41,4 @@ export declare abstract class BaseApi {
      */
     OPTIONS(subPath: string, handlers: ExpressRequesthandlers[]): void;
 }
-//# sourceMappingURL=BaseApi.d.ts.map
+//# sourceMappingURL=BaseService.d.ts.map

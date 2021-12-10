@@ -2,7 +2,7 @@ export declare type ObjecType = number | string | boolean | object | Object | vo
 export declare type ObjectValidateOption = {
     value: any;
     required?: boolean;
-    type: ObjecType;
+    type?: ObjecType;
 };
 export declare type ObjectValidateOptions = {
     [key: string]: ObjectValidateOption;
