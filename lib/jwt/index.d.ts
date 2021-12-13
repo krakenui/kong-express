@@ -1,25 +1,20 @@
-export declare type UserInfo = {
-    userId: string;
-    verified?: boolean;
+export declare type JwtClaim = {
+    userId: number;
     email: string;
-    roles?: string;
+    verified: boolean;
+    scopes?: string;
     displayName?: string;
     profilePicture?: string;
+    locale?: string;
 };
-export declare type JwtToken = {
-    userId: string;
-    verified: boolean;
+export declare type JwtPayload = JwtClaim & {
     exp: number;
     iat: number;
-    email: string;
-    roles?: string;
-    displayName?: string;
-    profilePicture?: string;
 };
+export declare type JwtToken = string;
 export declare class JwtHelpers {
-    private static JWT_SECRET_KEY;
-    private static JWT_EXPIRED_MINUTES;
-    static generateToken(user: UserInfo): string;
-    static verifyToken(token: string): JwtToken;
+    static generateToken(userInfo: JwtClaim): JwtToken;
+    static generateRefreshToken(userInfo: JwtClaim): JwtToken;
+    static verifyToken(token: string): JwtPayload;
 }
 //# sourceMappingURL=index.d.ts.map

@@ -1,5 +1,12 @@
 import { Request } from 'express';
+
 import Logger from '../helpers/Logging';
+import { JwtPayload } from '../jwt';
+
+export enum UserRole {
+    Admin = 'admin',
+    Customer = 'customer',
+}
 
 export type KongExpressRequest = Request & {
     authContext: AuthContext;
@@ -7,17 +14,7 @@ export type KongExpressRequest = Request & {
     params: any;
 };
 
-export type AuthContext = {
-    userId: string;
-    verified: boolean;
-    exp: number;
-    iat: number;
-    email: string;
-    roles?: string;
-    displayName?: string;
-    profilePicture?: string;
-    locale?: string;
-};
+export type AuthContext = JwtPayload;
 
 export abstract class AuthAdapter {
     loginRedirectURL(): Promise<string> {

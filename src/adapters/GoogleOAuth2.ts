@@ -43,7 +43,7 @@ export class GoogleOAuth2 extends AuthAdapter {
         }
 
         return {
-            userId: tokenPayload.sub,
+            userId: +tokenPayload.sub,
             verified: !!tokenPayload.email_verified,
             email: tokenPayload.email || '',
             exp: tokenPayload.exp,
